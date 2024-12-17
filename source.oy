@@ -1,0 +1,78 @@
+import pyautogui
+import random
+import string
+import time
+
+def back_to_register():
+    print("=====dang mo trinh duyet, cho 5 giay======")
+    time.sleep(5)
+    new_url = "https://app.nodepay.ai/register?ref=JJZqh2EuYeF3qjr"
+    time.sleep(2)
+    pyautogui.hotkey('command', 'l')  # Use 'ctrl' on Windows/Linux
+    time.sleep(1)
+    pyautogui.press('backspace')
+    pyautogui.write(new_url, interval=0.05)
+    pyautogui.press('enter')
+    print("=======Vao link dang ky=====")
+    time.sleep(2)
+
+def generate_random_username():
+    name_length = random.randint(5, 15)
+    random_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=name_length))
+    return random_name
+
+def register(username, password):
+    print("=====Nhap email=====")
+    pyautogui.click(765, 560)
+    pyautogui.write(username + '@gmail.com', interval=0.1)
+    time.sleep(1)
+    print("Nhap username")
+    pyautogui.click(765, 616)
+    pyautogui.write(username, interval=0.1)
+    time.sleep(1)
+    print("Nhap password")
+    pyautogui.click(765, 674)
+    pyautogui.write(password, interval=0.1)
+    time.sleep(1)
+    print("Nhap confirm password")
+    pyautogui.click(765, 786)
+    pyautogui.write(password, interval=0.1)
+    time.sleep(1)
+    print("Tic i have read")
+    pyautogui.click(437, 954)
+    time.sleep(2)
+    print("Click register")
+    pyautogui.click(632, 1124)
+    print("=======dang ky xong=======")
+    time.sleep(2)
+
+def login():
+    # save pass
+    pyautogui.click(1211, 372)
+    # click save
+    pyautogui.click(1323, 559)
+    # click back to login
+    pyautogui.click(893, 888)
+    time.sleep(2)
+    # submit
+    pyautogui.click(834, 958)
+
+def claim():
+    # close popup
+    pyautogui.click(1112, 411)
+    # claim
+    pyautogui.click(738, 966)
+    # click ext
+    pyautogui.click(1316, 255)
+    # activate
+    pyautogui.click(1150, 601)
+
+
+# MAIN FUNCTION
+username = generate_random_username()
+password = '1234d@EF'
+back_to_register()
+register(username, password)
+# login()
+# claim()
+# print(pyautogui.displayMousePosition())
