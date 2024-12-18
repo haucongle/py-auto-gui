@@ -40,6 +40,8 @@ def login(username, password):
     pyautogui.write(username)
     pyautogui.press('tab')
     pyautogui.write(password)
+    pyautogui.press('tab')
+    pyautogui.press('space')
     pyautogui.click(-1131, 1252)
     for i in range(4):
         pyautogui.press('tab')
@@ -54,10 +56,9 @@ def claim():
 
 password = '1234d@EF'
 new_url = "https://app.nodepay.ai/register?ref=7sIsRp5LWWvWext"
-loop = 200
-wait_time = 7
+loop = 100
 for i in range(loop):
-    begin = time.time() 
+    wait_time = 4+i/10
     username = generate_random_username()
     time.sleep(2)
     back_to_register(new_url)
@@ -67,6 +68,3 @@ for i in range(loop):
     login(username, password)
     time.sleep(wait_time)
     claim()
-    print(i+1, username, time.time() - begin)
-# while True:
-#     print(pyautogui.position())
