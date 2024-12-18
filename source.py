@@ -68,11 +68,8 @@ def back_to_login():
 password = '1234d@EF'
 url = "https://app.nodepay.ai/register?ref=7sIsRp5LWWvWext"
 loop = 100
-isNormal = False
-users = [
-    'b5sq62xj7yi36', 
-]
-# for i, username in enumerate(users):
+isNormal = True
+
 for i in range(loop):
     wait_time = 4+i/10
     username = generate_random_username()
@@ -84,3 +81,14 @@ for i in range(loop):
     login(username, password)
     time.sleep(wait_time)
     claim(isNormal)
+# users = [
+#     'b5sq62xj7yi36', 
+# ]
+# for username in users:
+#     wait_time = 4
+#     time.sleep(2)
+#     back_to_login()
+#     time.sleep(wait_time)
+#     login(username, password)
+#     time.sleep(wait_time)
+#     claim(isNormal)
