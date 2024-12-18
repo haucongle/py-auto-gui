@@ -54,9 +54,20 @@ def claim():
     # pyautogui.click(-307, 409)
     pyautogui.click(-378, 409) # incognito
 
+def back_to_login():
+    pyautogui.click(-1850, 652)
+    pyautogui.hotkey('command', 'l')
+    pyautogui.press('backspace')
+    pyautogui.write('https://app.nodepay.ai/login')
+    pyautogui.press('enter')
+
 password = '1234d@EF'
 new_url = "https://app.nodepay.ai/register?ref=7sIsRp5LWWvWext"
 loop = 100
+users = [
+    'b5sq62xj7yi36', 
+]
+# for i, username in enumerate(users):
 for i in range(loop):
     wait_time = 4+i/10
     username = generate_random_username()
