@@ -3,51 +3,55 @@ import random
 import string
 import time
 
-def generate_random_username():
+def gen_username():
     name_length = random.randint(10, 20)
     random_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=name_length))
     return random_name
 
-def back_to_register(url):
-    pyautogui.click(-1850, 652)
+def register(username, wait_time):
+    time.sleep(wait_time)
+    pyautogui.click(-1850,652)
     pyautogui.hotkey('command', 'l')
     pyautogui.press('backspace')
-    pyautogui.write(url)
+    pyautogui.write('https://app.nodepay.ai/register?ref=7sIsRp5LWWvWext')
     pyautogui.press('enter')
-
-def register(username, password):
+    time.sleep(wait_time)
     pyautogui.press('tab')
     pyautogui.write(username + '@gmail.com')
     pyautogui.press('tab')
     pyautogui.write(username)
     pyautogui.press('tab')
-    pyautogui.write(password)
+    pyautogui.write('1234d@EF')
     pyautogui.press('tab')
-    pyautogui.write(password)
+    pyautogui.write('1234d@EF')
     pyautogui.press('tab')
     pyautogui.press('tab')
     pyautogui.press('space')
     pyautogui.click(-1132, 1392)
-    for i in range(4):
-        pyautogui.press('tab')
-    pyautogui.press('enter')
-    time.sleep(2)
-    pyautogui.press('tab')
+    pyautogui.press(['tab','tab','tab','tab'])
+    time.sleep(wait_time/2)
     pyautogui.press('enter')
 
-def login(username, password):
+def login(username, wait_time):
+    time.sleep(wait_time)
+    pyautogui.hotkey('command', 'l')
+    pyautogui.press('backspace')
+    pyautogui.write('https://app.nodepay.ai/login')
+    pyautogui.press('enter')
+    time.sleep(wait_time)
     pyautogui.press('tab')
     pyautogui.write(username)
     pyautogui.press('tab')
-    pyautogui.write(password)
+    pyautogui.write('1234d@EF')
     pyautogui.press('tab')
     pyautogui.press('space')
     pyautogui.click(-1131, 1252)
-    for i in range(4):
-        pyautogui.press('tab')
+    pyautogui.press(['tab','tab','tab','tab'])
+    time.sleep(wait_time/2)
     pyautogui.press('enter')
 
-def claim(isNormal):
+def activate(isNormal):
+    time.sleep(wait_time)
     if isNormal: 
         pyautogui.click(-147, 64)
     else:
@@ -58,37 +62,12 @@ def claim(isNormal):
     else:
         pyautogui.click(-378, 409)
 
-def back_to_login():
-    pyautogui.click(-1850, 652)
-    pyautogui.hotkey('command', 'l')
-    pyautogui.press('backspace')
-    pyautogui.write('https://app.nodepay.ai/login')
-    pyautogui.press('enter')
-
-password = '1234d@EF'
-url = "https://app.nodepay.ai/register?ref=7sIsRp5LWWvWext"
-loop = 100
+loop = 50
 isNormal = True
-
 for i in range(loop):
-    wait_time = 4+i/10
-    username = generate_random_username()
-    time.sleep(2)
-    back_to_register(url)
-    time.sleep(wait_time)
-    register(username, password)
-    time.sleep(wait_time)
-    login(username, password)
-    time.sleep(wait_time)
-    claim(isNormal)
-# users = [
-#     'b5sq62xj7yi36', 
-# ]
-# for username in users:
-#     wait_time = 4
-#     time.sleep(2)
-#     back_to_login()
-#     time.sleep(wait_time)
-#     login(username, password)
-#     time.sleep(wait_time)
-#     claim(isNormal)
+    wait_time = 3+i/10
+    username = gen_username()
+    print(i, username)
+    register(username, wait_time)
+    login(username, wait_time)
+    activate(isNormal)
