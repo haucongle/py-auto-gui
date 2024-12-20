@@ -50,24 +50,18 @@ def login(username, wait_time):
     time.sleep(wait_time/2)
     pyautogui.press('enter')
 
-def activate(isNormal):
+def activate():
     time.sleep(wait_time)
-    if isNormal: 
-        pyautogui.click(-147, 64)
-    else:
-        pyautogui.click(-223, 64)
+    pyautogui.click(-147, 64)
     time.sleep(0.5)
-    if isNormal:
-        pyautogui.click(-307, 409)
-    else:
-        pyautogui.click(-378, 409)
+    pyautogui.click(-307, 409)
 
-loop = 50
-isNormal = True
+loop = 2
 for i in range(loop):
-    wait_time = 3+i/10
+    begin = time.time()
+    wait_time = 3+i/20
     username = gen_username()
-    print(i, username)
     register(username, wait_time)
     login(username, wait_time)
-    activate(isNormal)
+    activate()
+    print(i, username, time.time() - begin)
