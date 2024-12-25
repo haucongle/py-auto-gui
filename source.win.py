@@ -14,7 +14,7 @@ def register(username, wait_time):
     pyautogui.press('enter')
     time.sleep(wait_time)
     pyautogui.press('tab')
-    pyautogui.write(username + '@gmail.com')
+    pyautogui.write(username + '@bmail.com')
     pyautogui.press('tab')
     pyautogui.write(username)
     pyautogui.press('tab')
@@ -24,7 +24,7 @@ def register(username, wait_time):
     pyautogui.press('tab')
     pyautogui.press('tab')
     pyautogui.press('space')
-    pyautogui.click(3485,1940)
+    pyautogui.click(3483,1942)
     pyautogui.press(['tab','tab','tab','tab'])
     time.sleep(wait_time/2)
     pyautogui.press('enter')
@@ -42,27 +42,28 @@ def login(username, wait_time):
     pyautogui.write('1234d@EF')
     pyautogui.press('tab')
     pyautogui.press('space')
-    pyautogui.click(3485,1671)
+    pyautogui.click(3485,1667)
     pyautogui.press(['tab','tab','tab','tab'])
     time.sleep(wait_time/2)
     pyautogui.press('enter')
 
 def activate():
     time.sleep(wait_time)
-    pyautogui.click(4817,126)
+    pyautogui.click(4743,128)
     time.sleep(0.5)
-    pyautogui.click(4482,821)
+    pyautogui.click(4441,821)
 
-loop = 1000
+loop = 200
 for i in range(loop):
     begin = time.time()
-    wait_time = random.randint(3,6)
+    wait_time = 3+i/200
     username = gen_username()
     register(username, wait_time)
     login(username, wait_time)
     activate()
     print(i, username, time.time() - begin)
-
+# while True:
+#     print(pyautogui.position())
 # users = [
 #     '3fas5knx0ftwpgn',
 #     'qciyj2yf2d1w',
